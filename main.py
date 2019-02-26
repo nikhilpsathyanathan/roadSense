@@ -26,17 +26,32 @@ df2 = pd.DataFrame(labels)
 df1=pd.DataFrame(com_data)
 df1['Class']=df2
 print(df1)
-df1.to_csv(file_name+"_labled.csv", sep=",", encoding='utf-8')
+df1.to_csv(file_name+"_labled.csv", sep=",", encoding='utf-8',index=False)
 
 #printing the time requires to execute 
 end = time.time()
 print(end - start)
 
+print("pothole count")
+print(df1['Class'].value_counts())
+
+#filter pothole
+
+pothole_data=df1.loc[df1['Class'] == -1]
+print(pothole_data)
+
+
+#pothole only data
+df_pothole = pothole_data[['Lat','Lon','Class']]
+df_pothole.to_csv(file_name+"_pothole.csv", sep=",", encoding='utf-8',index=False)
+
 #plotting the value in 3d 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-x = np.array(train_data['Gx'])
-y = np.array(train_data['Gy'])
-z = np.array(train_data['Gz'])
+x = np.array(df1['Gx'])
+y = np.array(df1['Gy'])
+z = np.array(df1['Gz'])
+
 ax.scatter(x,y,z, marker="s", c=clustering.labels_)
+
 plt.show()
