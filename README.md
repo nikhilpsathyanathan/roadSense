@@ -23,6 +23,8 @@ Currently the system provide accuracy of *98%*
 
 # App developed for data collection
 
+![alt text](https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img1.jpg)
+
 
 ### Tech
 
