@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
 import time
+import json
+#import tensorflow as tf
 
 start = time.time()
 
@@ -44,6 +46,8 @@ print(pothole_data)
 #pothole only data
 df_pothole = pothole_data[['Lat','Lon','Class']]
 df_pothole.to_csv(file_name+"_pothole.csv", sep=",", encoding='utf-8',index=False)
+
+df_pothole.to_json('temp.json', orient='records', lines=True)
 
 #plotting the value in 3d 
 fig = plt.figure()
