@@ -22,8 +22,7 @@ This could help drivers get a clear view of what is the quality of road ahead.Th
 Currently the system provide accuracy of *98%* 
 
 # App developed for data collection
-
-![alt text](https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img1.jpg)
+<img src="https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img1.jpg" width="50%" height="50%">
 
 
 ### Tech
