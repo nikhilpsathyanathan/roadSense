@@ -1,7 +1,7 @@
 # RoadSense : Specially Designed for kerala roads
 
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status]]
 
 Roadsense is an intelligent pothole detector which could help in obtaining the conditions of road ahead.
 This could help drivers get a clear view of what is the quality of road ahead.The system uses Less human effort and it will guarantee safety and comfort to different road users.
