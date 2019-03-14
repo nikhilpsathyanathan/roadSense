@@ -19,7 +19,7 @@ This could help drivers get a clear view of what is the quality of road ahead.Th
 
 Currently the system provide accuracy of *98%* 
 
-# App developed for data collection
+### App developed for data collection
 <img src="https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img1.jpg" width="50%" height="50%">
 
 
@@ -46,7 +46,6 @@ $ python main.py
 
 
 
-
 ### Development
 
 Want to contribute? Great!
@@ -59,10 +58,18 @@ Verify the deployment by navigating to your server address in your preferred bro
 127.0.0.1:8080
 ```
 
-### Todos
+### Todo
 
  - Admin panel
  - User android app
+ 
+ ### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
