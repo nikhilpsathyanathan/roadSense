@@ -1,7 +1,7 @@
 import pandas as pd
 x = pd.read_csv("pothole.csv")
 
-def df_to_geojson(df, properties, lat='latitude', lon='longitude'):
+def df_to_geojson(df, properties, lat='Lat', lon='Lon'):
     geojson = {'type':'FeatureCollection', 'features':[]}
     for _, row in df.iterrows():
         feature = {'type':'Feature','properties':{},'geometry':{'type':'Point','coordinates':[]}}
