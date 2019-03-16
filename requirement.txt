@@ -1,6 +1,5 @@
 matplotlib
-mpl_toolkits
 pandas
 numpy
 sklearn
-json
+matplotlib
