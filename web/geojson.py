@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 x = pd.read_csv("pothole.csv")
 
 def df_to_geojson(df, properties, lat='Lat', lon='Lon'):
@@ -15,4 +16,6 @@ def df_to_geojson(df, properties, lat='Lat', lon='Lon'):
 cols=['Lat','Lon']
 geojson=df_to_geojson(x,cols)
 
+with open('web.geojson','w') as outfile:
+    json.dump(geojson,outfile)
 print(geojson)
