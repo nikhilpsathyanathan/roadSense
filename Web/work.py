@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 import pymongo
 
 
 app = Flask(__name__)
 @app.route('/')
 def index():
- return 'Hello world'
+ return render_template('index.html')
 
 @app.route('/<name>')
 def hello_name(name):
