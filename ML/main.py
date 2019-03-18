@@ -11,7 +11,7 @@ import convert_togeojson as call
 start = time.time()
 
 #filename of the csv file
-file_name='kaiparambu_nice' 
+file_name='Kuzhi' 
 train_data = pd.read_csv(file_name+'.csv',usecols=['Gx','Gy','Gz'])
 train_data= np.array(train_data)
 print(train_data)
@@ -58,12 +58,10 @@ with open('pothole_coordinates.geojson','w') as out:
     json.dump(plot,out)
     
 #plotting the value in 3d 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-x = np.array(df1['Gx'])
-y = np.array(df1['Gy'])
-z = np.array(df1['Gz'])
-
-ax.scatter(x,y,z, marker="s", c=clustering.labels_)
-
-plt.show()
+#fig = plt.figure()
+#ax = fig.add_subplot(111, projection='3d')
+#x = np.array(df1['Gx'])
+#y = np.array(df1['Gy'])
+#z = np.array(df1['Gz'])
+#ax.scatter(x,y,z, marker="s", c=clustering.labels_)
+#plt.show()
