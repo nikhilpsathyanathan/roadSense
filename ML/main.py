@@ -5,7 +5,8 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 import time
 import json
-#import tensorflow as tf
+#import from another python file 
+import convert_togeojson as call 
 
 start = time.time()
 
@@ -49,6 +50,13 @@ df_pothole.to_csv(file_name+"_pothole.csv", sep=",", encoding='utf-8',index=Fals
 
 df_pothole.to_json('temp.json', orient='records', lines=True)
 
+#creating a geojson file for mapping purpose
+cols=['Lat','Lon']
+pot=pd.read_csv(file_name+"_pothole.csv")
+plot = call.df_to_geojson(pot,cols)
+with open('pothole_coordinates.geojson','w') as out:
+    json.dump(plot,out)
+    
 #plotting the value in 3d 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
