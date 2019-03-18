@@ -22,6 +22,9 @@ Currently the system provide accuracy of *98%*
 ### App developed for data collection
 <img src="https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img1.jpg" width="50%" height="50%">
 
+### Pothole mapped
+<img src="https://github.com/nikhilpsathyanathan/roadSense/blob/master/Screenshots/img2.png" width="50%" height="50%">
+
 
 ### Tech
 
@@ -42,6 +45,8 @@ Install the dependencies  and start the server.
 $ cd roadSense
 $ pip3 install -r requirements.txt
 $ python main.py
+
+$ python -m http.server 8080 --bind 127.0.0.1  // for heat map only
 ```
 
 
