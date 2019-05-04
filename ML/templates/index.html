@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Create a heatmap layer</title>
+    <title>RoadSense Dash</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
@@ -41,7 +41,7 @@
             // Heatmap layers also work with a vector tile source.
             map.addSource('earthquakes', {
                 "type": "geojson",
-                "data": "web.geojson"
+                "data": "pothole_coordinates.geojson"
             });
 
             map.addLayer({

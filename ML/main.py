@@ -16,6 +16,18 @@ train_data = pd.read_csv(file_name+'.csv',usecols=['Gx','Gy','Gz'])
 train_data= np.array(train_data)
 print(train_data)
 
+import pymongo
+import json
+
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["local"]
+mycol = mydb["data"]
+#mydict = {"lat": "10.1212","lon":"125223"}
+#x = mycol.insert_one(mydict)
+
+data_json = json.loads(train_data.to_json(orient='records'))
+mycol.insert(data_json)
+
 #clystering the data with center 100 points and distance .8
 clustering = DBSCAN(eps=.8, min_samples=100).fit(train_data)
 print("Clustering completed")
@@ -47,6 +59,7 @@ print(pothole_data)
 #pothole only data
 df_pothole = pothole_data[['Lat','Lon','Class']]
 df_pothole.to_csv(file_name+"_pothole.csv", sep=",", encoding='utf-8',index=False)
+print(df_pothole)
 
 df_pothole.to_json('temp.json', orient='records', lines=True)
 
