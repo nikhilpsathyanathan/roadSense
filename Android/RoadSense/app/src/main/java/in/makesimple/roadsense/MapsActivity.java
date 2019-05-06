@@ -5,10 +5,15 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -47,7 +52,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager mLocationManager;
     ArrayList<Pothole> potholeArrayList= new ArrayList<>();
     static MarkerOptions positionMarker;
-
+   static Location nextpoint;
+    TextView message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }).check();
 
 
+        nextpoint=new Location("locationA");
+        nextpoint.setLatitude(17.375775);
+        nextpoint.setLongitude(78.469218);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -75,6 +84,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5,
                 5, mLocationListener);
         mapFragment.getMapAsync(this);
+
+
+        // get the bottom sheet view
+        LinearLayout llBottomSheet = (LinearLayout) findViewById(R.id.bottom_sheet);
+
+        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        bottomSheetBehavior.setPeekHeight(200);
+        bottomSheetBehavior.setHideable(false);
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+                if (newState==3){
+                    try {
+                        float distance = mLocation.distanceTo(nextpoint);
+                        message.setText(distance+" Meter away");
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+
+
+        message= (TextView)findViewById(R.id.alertMessage);
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -95,6 +137,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Marker m = mMap.addMarker(positionMarker);
                 m.setPosition(loc);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+
             }
         }
 
@@ -119,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
-                "http://192.168.43.202:5000/getdata",
+                "http://192.168.43.42:5000/getdata",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -133,6 +176,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 potholeArrayList.add(new Pothole(Double.parseDouble(lat),Double.parseDouble(lon)));
                                 createMarker(Double.parseDouble(lat),Double.parseDouble(lon),"Pothole");
                             }
+                            nextpoint.setLatitude(potholeArrayList.get(0).getLat());
+                            nextpoint.setLongitude(potholeArrayList.get(0).getLon());
                             Log.d("COUNT",potholeArrayList.size()+"");
                         }catch (JSONException e){
                             e.printStackTrace();
