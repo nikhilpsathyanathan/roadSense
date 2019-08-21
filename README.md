@@ -1,5 +1,5 @@
 # RoadSense : Specially Designed for kerala roads
-
+>>Vidya academy of science and technology thrissur
 
 Roadsense is an intelligent pothole detector which could help in obtaining the conditions of road ahead.
 This could help drivers get a clear view of what is the quality of road ahead.The system uses Less human effort and it will guarantee safety and comfort to different road users.
@@ -67,7 +67,8 @@ Verify the deployment by navigating to your server address in your preferred bro
 
  - Admin panel
  - User android app
- 
+ - combine 2 apps and 
+ - used json response as file in app, instead of getting live data from server(for testing purposes)
  ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
